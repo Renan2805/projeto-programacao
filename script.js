@@ -7,14 +7,20 @@ function typeEffect(element, text = '') {
       element.innerText = text.substring(0, i + 1) + '|'
       i++
     }
-  }, 200)
+  }, 150)
 
   return setInterval(() => {
-    if(element.innerText == 'Programação' || element.innerText == 'Programação|' ) {
+    const currrentText = element.innerText
+
+    if(currrentText == text || currrentText == `${text}|`) {
       clearInterval(textInterval)
-      if(element.innerText == 'Programação|') element.innerText = 'Programação'
-      else element.innerText = 'Programação|'
+      if(currrentText[currrentText.length - 1] == '|') {
+        element.innerText = text
+      } else {
+        element.innerText = `${text}|`
+      }
     }
+
   }, 1000)
 }
 
