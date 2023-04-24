@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Code+Pro:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --section-height: 100vh;
+
+  --text-color-primary: #D9D9D9
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  font-family: 'Source Code Pro', monospace;
+  color: var(--text-color-primary);
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+header {
+  width: 100%;
+  height: var(--header-height);
+
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: absolute;
+}
+
+header img {
+  height: 70px;
+}
+
+header ul {
+  width: 30%;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  font-size: 16px;
+  color: #d9d9d9;
+}
+
+header li {
+  cursor: pointer;
+  position: relative;
+}
+
+header li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #d9d9d9;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+header li:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.section1 {
+  background: radial-gradient(51.75% 51.75% at 44.2% 48.25%, #3A3A3A 0%, #141414 100%);
+  height: var(--section-height);
+
+  padding-top: var(--header-height);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.section1-top {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.section1-code {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.section1-code img {
+  width: 25rem;
+}
+
+.section1-text {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.section1-text h1 {
+  letter-spacing: .4em;
+  line-height: 60px;
+}
+
+.section1-text h3 {
+  max-width: 30ch;
+  line-height: 150%;
+}
+
+.section1-text img {
+  height: 10rem;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.section1-end img {
+  animation: float 3s ease-in-out infinite;
+  transition: transform 1s ease-in-out;
+}
+
+.section1-end img:hover {
+  cursor: pointer;
+  transform: scale(2);
+}
