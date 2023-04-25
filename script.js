@@ -1,5 +1,5 @@
 
-function typeEffect(element, text = '') {
+function typeEffect(element, text = '', speed = 150) {
   element.innerText = ''
   var i = 0
   const textInterval = setInterval(() => {
@@ -7,7 +7,7 @@ function typeEffect(element, text = '') {
       element.innerText = text.substring(0, i + 1) + '|'
       i++
     }
-  }, 150)
+  }, speed)
 
   return setInterval(() => {
     const currrentText = element.innerText
