@@ -5,9 +5,41 @@
   --header-height: 80px;
   --section-height: 100vh;
 
-  --text-color-primary: #D9D9D9
+  --primary-100:#00ADB5;
+  --primary-200:#AAE3E2;
+  --primary-300:#fdf6fd;
+  --accent-100:#AC7DD2;
+  --accent-200:#fff4ff;
+  --text-100:#EEEEEE;
+  --text-200:#C5C5C5;
+  --text-300:#4A4A4A;
+  --bg-100:#222831;
+  --bg-200:#393E46;
+  --bg-300:#454e59;
+  --bg-400: #D9D9D9;
 }
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--accent-100) var(--bg-100);
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--bg-100);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--accent-100);
+    border-radius: 10px;
+    border: 3px solid var(--bg-100)
+  }
 
 * {
   margin: 0;
@@ -17,7 +49,7 @@
 
 h1, h2, h3 {
   font-family: 'Source Code Pro', monospace;
-  color: var(--text-color-primary);
+  color: var(--text-100);
 }
 
 h1 {
@@ -55,7 +87,7 @@ header ul {
   font-family: 'Fira Code', monospace;
   font-weight: 500;
   font-size: 16px;
-  color: #d9d9d9;
+  color: var(--text-100);
 }
 
 header li {
@@ -71,7 +103,7 @@ header li::after {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #d9d9d9;
+  background-color: var(--text-100);
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -82,7 +114,7 @@ header li:hover::after {
 }
 
 .section1 {
-  background: radial-gradient(51.75% 51.75% at 44.2% 48.25%, #3A3A3A 0%, #141414 100%);
+  background: radial-gradient(51.75% 51.75% at 44.2% 48.25%, var(--bg-300) 0%, var(--bg-100) 100%);
   height: var(--section-height);
 
   padding-top: var(--header-height);
@@ -147,12 +179,29 @@ header li:hover::after {
     transform: translateY(0);
   }
 }
-.section1-end img {
+.chevron-float {
   animation: float 3s ease-in-out infinite;
   transition: transform 1s ease-in-out;
 }
 
-.section1-end img:hover {
+.chevron-float:hover {
   cursor: pointer;
   transform: scale(2);
+}
+
+.section2 {
+  background-color: var(--bg-400);
+  color: var(--text-300);
+
+  height: var(--section-height);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.section2-top h1,
+.section2-top h3 {
+  color: var(--text-300);
+  max-width: 30ch;
 }
