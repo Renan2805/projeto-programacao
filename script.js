@@ -1,4 +1,5 @@
 
+// Essa função recebe um elemento HTML (element) e um texto que será "digitado" dentro desse elemento
 function typeEffect(element, text = '') {
   element.innerText = ''
   var i = 0
