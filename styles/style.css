@@ -95,6 +95,11 @@ header li {
   position: relative;
 }
 
+header li > a {
+  color: var(--text-100);
+  text-decoration: none;
+}
+
 header li::after {
   content: '';
   position: absolute;
@@ -169,24 +174,24 @@ header li:hover::after {
 }
 
 @keyframes float {
-  0% {
+  0%, 100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-5px);
   }
-  100% {
-    transform: translateY(0);
-  }
 }
+
 .chevron-float {
-  animation: float 3s ease-in-out infinite;
-  transition: transform 1s ease-in-out;
+  animation: float 1s linear infinite;
 }
 
 .chevron-float:hover {
   cursor: pointer;
-  transform: scale(2);
+}
+
+.chevron-float a {
+  height: fit-content;
 }
 
 .section2 {
