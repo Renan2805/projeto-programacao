@@ -23,14 +23,14 @@
   </header>
   <main>
     <div class="form-wrapper">
-      <form action="/usuarios/autenticar" method="post">
+      <form>
         <h1>FAZER LOGIN</h1>
         <div class="input-wrapper">
-          <input type="text" id="user" name="user" placeholder=" " class="form-input" required>
+          <input type="text" id="ipt_user" name="user" placeholder=" " class="form-input" required>
           <label for="user" class="form-label">Usuario</label>
         </div>
         <div class="input-wrapper">
-          <input type="password" name="password" placeholder=" " class="form-input" required>
+          <input type="password" id="ipt_password" name="password" placeholder=" " class="form-input" required>
           <label for="password" class="form-label">Senha</label>
           <span><a href="#">esqueci a senha</a></span>
         </div>
@@ -46,5 +46,6 @@
       <img src="../../assets/image/svgLogin.svg">
     </div>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>

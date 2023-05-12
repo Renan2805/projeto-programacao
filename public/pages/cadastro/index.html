@@ -23,26 +23,26 @@
   </header>
   <main>
     <div class="form-wrapper">
-      <form action="/usuarios/cadastrar" method="post">
+      <form>
         <h1>CADASTRO</h1>
         <div class="input-wrapper">
-          <input type="text" id="user" name="user" placeholder=" " class="form-input" required>
+          <input type="text" id="ipt_user" name="user" placeholder=" " class="form-input" required>
           <label for="user" class="form-label">Usuario</label>
         </div>
         <div class="input-wrapper">
-          <input type="email" id="email" name="email" placeholder=" " class="form-input" required>
+          <input type="email" id="ipt_email" name="email" placeholder=" " class="form-input" required>
           <label for="email" class="form-label">Email</label>
         </div>
         <div class="input-wrapper">
-          <input type="password" name="password" placeholder=" " class="form-input" required>
+          <input type="password" id="ipt_senha" name="password" placeholder=" " class="form-input" required>
           <label for="password" class="form-label">Senha</label>
         </div>
         <div class="input-wrapper">
-          <input type="password" name="confirm+password" placeholder=" " class="form-input" required>
-          <label for="confirm+password" class="form-label">Confirmar Senha</label>
+          <input type="password" name="confirm-password" placeholder=" " class="form-input" required>
+          <label for="confirm-password" class="form-label">Confirmar Senha</label>
         </div>
         <div class="buttons-wrapper">
-          <button type="submit" id="btn_login">Cadastrar</button>
+          <button type="submit" id="btn_cadastro">Cadastrar</button>
           <div>
             <span>já possui cadastro? entre <a href="/login">aqui</a></span>
           </div>
@@ -53,5 +53,6 @@
       <img src="../../assets/image/svgCadastro.svg">
     </div>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
