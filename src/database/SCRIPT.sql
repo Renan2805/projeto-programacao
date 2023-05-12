@@ -1,3 +1,6 @@
+drop database if exists projeto_programacao;
+create database if not exists projeto_programacao;
+use projeto_programacao;
 
 create table usuario (
     idUsuario int primary key auto_increment,

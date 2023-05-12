@@ -2,18 +2,23 @@
   "name": "projeto-programacao",
   "version": "1.0.0",
   "description": "Site desenvolvido para fins educacionais.",
-  "main": "script.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js",
+    "dev": "nodemon --exec node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "http": "^0.0.1-security",
-    "mysql": "^2.18.1"
+    "mssql": "^9.1.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.3.1",
+    "nodemon": "^2.0.22"
   }
 }
