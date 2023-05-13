@@ -38,10 +38,8 @@ function entrar(req, res) {
       .then(
         function (resultado) {
           console.log(`\nResultados encontrados: ${resultado.length}`);
-          console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
 
           if (resultado.length == 1) {
-            console.log(resultado);
             res.json(resultado[0]);
           } else if (resultado.length == 0) {
             res.status(403).send("Email e/ou senha inválido(s)");
@@ -94,9 +92,27 @@ function cadastrar(req, res) {
   }
 }
 
+function fetchDados(req, res) {
+  var idUsuario = req.body.id
+
+  console.log('idUser: ' + JSON.stringify(req.body))
+  if(idUsuario == undefined) {
+    res.status(400).send('Seu id está undefined')
+  } else {
+    usuarioModel.fetchDados(idUsuario)
+      .then((resultado) => res.json(resultado))
+      .catch(erro => {
+        console.log(erro)
+        console.log('\nErro na função fetchDados do controllerUsuario \n', erro.sqlMessage)
+        res.status(500).json(erro.sqlMessage)
+      })
+  }
+}
+
 module.exports = {
   entrar,
   cadastrar,
   listar,
-  testar
+  testar,
+  fetchDados
 }

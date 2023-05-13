@@ -21,8 +21,8 @@ var sqlServerConfig = {
 var mySqlConfig = {
   host: "localhost",
   database: "projeto_programacao",
-  user: "aluno",
-  password: "sptech",
+  user: "root",
+  password: "2805",
 };
 
 function executar(instrucao) {
@@ -51,7 +51,6 @@ function executar(instrucao) {
         if (erro) {
           reject(erro);
         }
-        console.log(resultados);
         resolve(resultados);
       });
       conexao.on('error', function (erro) {

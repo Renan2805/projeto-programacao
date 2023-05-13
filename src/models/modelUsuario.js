@@ -31,8 +31,17 @@ function cadastrar(user, email, senha) {
   return database.executar(instrucao);
 }
 
+function fetchDados(id) {
+
+  var instrucao = `SELECT * FROM dadosPessoais where fkUsuario = ${id};`
+
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao)
+}
+
 module.exports = {
   entrar,
   cadastrar,
   listar,
+  fetchDados
 };

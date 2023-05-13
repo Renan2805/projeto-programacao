@@ -20,4 +20,7 @@ router.post("/autenticar", (req, res) => {
   usuarioController.entrar(req, res);
 });
 
+router.post('/dadosUsuario', (req, res) => {
+  usuarioController.fetchDados(req, res)
+})
 module.exports = router;
