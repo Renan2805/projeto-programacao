@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "/public/pages/login/")));
 app.get('/login', (_req, res) => res.sendFile(path.join(__dirname + '/public/pages/login/index.html')))
 
 app.use(express.static(path.join(__dirname, "/public/pages/cadastro/")));
-app.get('/login', (_req, res) => res.sendFile(path.join(__dirname + '/public/pages/cadastro/index.html')))
+app.get('/cadastrar', (_req, res) => res.sendFile(path.join(__dirname + '/public/pages/cadastro/index.html')))
 
 app.use(express.static(path.join(__dirname, "/public/pages/cadastro/")));
 app.get('/dashboard', (_req, res) => res.sendFile(path.join(__dirname + '/public/pages/dashboard/index.html')))

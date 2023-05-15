@@ -32,6 +32,7 @@
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
+    /* display: none; */
     width: 16px;
   }
 
@@ -64,6 +65,10 @@ h3 {
   font-size: 32px;
 }
 
+body {
+  background: var(--bg-400);
+}
+
 header {
   width: 100%;
   height: var(--header-height);
@@ -75,6 +80,8 @@ header {
   align-items: center;
 
   position: absolute;
+
+  z-index: 2;
 }
 
 header img {
@@ -133,6 +140,23 @@ header li:hover::after {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.section1::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: -0%;
+  top: 100%;
+  z-index: 10;
+  display: block;
+  height: 50px;
+  background-size: 50px 100%;
+  background-image: linear-gradient(135deg, var(--bg-100) 25%, transparent 25%), linear-gradient(225deg, var(--bg-100) 25%, transparent 25%);
+  background-position: 0 0;
 }
 
 .section1-top {
@@ -187,7 +211,7 @@ header li:hover::after {
 }
 
 .chevron-float {
-  animation: float 1s linear infinite;
+  animation: float 2s linear infinite;
 }
 
 .chevron-float:hover {
@@ -205,12 +229,73 @@ header li:hover::after {
   height: var(--section-height);
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: column;
+}
+
+.section2-top {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.section2-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.section2-bottom > img {
+  margin: 0 auto;
 }
 
 .section2-top h1,
 .section2-top h3 {
   color: var(--text-300);
+  max-width: 20ch;
+}
+
+.section2-top h1 {
+  font-weight: bold;
+}
+
+.section2-top h3 {
+  max-width: 30ch;
+  text-align: start;
+  margin: 0 .5rem;
+  font-weight: 600;
+}
+
+.section-illustration {
+  max-width: 600px;
+}
+
+.section3 {
+  height: var(--section-height);
+  background: var(--bg-100);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.section3-top {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.section3-top h1,
+.section3-top h3 {
+  color: var(--text-100);
+}
+
+.section3-top h1 {
+  margin-bottom: 1rem;
+  max-width: 17ch;
+}
+
+.section3-top h3 {
+  font-weight: 600;
+  margin: 0 .5rem;
   max-width: 30ch;
 }
