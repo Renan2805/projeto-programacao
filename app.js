@@ -28,9 +28,6 @@ app.get('/login', (_req, res) => res.sendFile(path.join(__dirname + '/public/pag
 app.use(express.static(path.join(__dirname, "/public/pages/cadastro/")));
 app.get('/cadastrar', (_req, res) => res.sendFile(path.join(__dirname + '/public/pages/cadastro/index.html')))
 
-app.use(express.static(path.join(__dirname, "/public/pages/cadastro/")));
-app.get('/dashboard', (_req, res) => res.sendFile(path.join(__dirname + '/public/pages/dashboard/index.html')))
-
 app.listen(PORTA, () => {
   console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
     Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n

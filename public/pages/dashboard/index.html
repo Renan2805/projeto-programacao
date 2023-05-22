@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Dashboard</title>
 </head>
 <body>
@@ -29,13 +30,34 @@
           <img src="./assets/svg/gear-fill.svg" alt="Bar icon">
           <span>Configurações</span>
         </li>
-        <li class="link-side-bar">
+        <li class="link-side-bar" id="btn_sair">
           <img src="./assets/svg/arrow-left-circle-fill.svg" alt="Bar icon">
           <span>Sair</span>
         </li>
       </ul>
     </div>
-  </main> 
+    <div class="dash">
+      <div class="tentativas card-dashboard">
+        <h2>Tentativas anteriores</h2>
+        <ul id="lista-tentativas">
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+          <li>10/10 nomeQuiz data</li>
+        </ul>
+      </div>
+      <div class="wrapper-grafico card-dashboard">
+        <h2>Quantidade de notas</h2>
+        <canvas id="chart-pizza"></canvas>
+      </div>
+    </div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

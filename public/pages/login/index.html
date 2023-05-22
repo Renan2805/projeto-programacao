@@ -58,19 +58,17 @@
           user: ipt_user.value,
           password: ipt_password.value,
         }),
-      })
-        .then((res) => {
+      }).then((res) => {
           if (res.ok) {
             console.log(res);
-
-            res.json().then((data) => {
-              sessionStorage.setItem('EMAIL_USUARIO', data.email)
-              sessionStorage.setItem('NOME_USUARIO', data.nomeUsuario)
-              sessionStorage.setItem('ID_USUARIO', data.idUsuario)
-
-              setTimeout(() => window.location.href = '/dashboard', 2000)
-            });
+            return res.json()
           }
+        }).then((data) => {
+          console.log('data', data)
+          sessionStorage.setItem('isLogged', true)
+          sessionStorage.setItem('userData', JSON.stringify(data))
+
+          setTimeout(() => window.location.href = '/pages/dashboard/index.html', 1000)
         })
         .catch((err) => console.error(err));
     });

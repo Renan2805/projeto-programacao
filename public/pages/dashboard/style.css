@@ -1,19 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Poppins:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap');
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  background-color: #252525;
+}
+
+/* Side bar styles */
 .side-bar {
+  /* background-color: red; */
   height: 100vh;
-  width: min-content;
+  min-width: calc(6rem);
   
-  background-color: rgba(0, 0, 0, .25);
-  
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Code Pro', monospace;
   font-size: 20px;
+  color: #fefefe;
 
   display: flex;
   flex-direction: column;
@@ -25,7 +33,7 @@
 }
 
 .side-bar-open {
-  width: calc(6rem + 17ch);
+  min-width: calc(8rem + 17ch);
 }
 
 .side-bar > ul {
@@ -40,6 +48,26 @@
 
 .link-side-bar {
   position: relative;
+
+  cursor: pointer;
+}
+
+.link-side-bar > span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fefefe;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.link-side-bar:hover span::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .link-side-bar > img {
@@ -53,13 +81,55 @@
   
   font-weight: bold;
 
-  left: 4rem;
+  left: -10rem;
   top: 50%;
   transform: translateY(-50%);
+  /* transform: translateX(-100%); */
 
   transition: 300ms;
 }
 
 .side-bar-text-shown {
   opacity: 1 !important;
+  left: 4rem !important;
+}
+
+
+/* Dashoard Main content */
+.dash {
+  /* flex: .1; */
+  inline-size: 100%;
+  padding: 2rem;
+
+  background-color: #fefefe;
+
+  border-radius: 1rem 0 0 1rem;
+
+  display: flex;
+}
+
+.card-dashboard {
+  background-color: #252525;
+  max-width: fit-content;
+  block-size: fit-content;
+  padding: 1rem;
+
+  font-family: 'Source Code Pro', monospace;
+  color: #fefefe;
+  border-radius: .5rem;
+}
+
+.tentativas > ul {
+  list-style: none;
+
+  color: #fefefe;
+}
+
+.tentativas li {
+  width: 100%;
+  text-align: center;
+}
+
+.wrapper-grafico {
+  inline-size: 32ch;
 }
