@@ -1,7 +1,9 @@
 function isLogged() {
-    const isLogged = sessionStorage.getItem('isLogged') == 'true' ? true : false
+  const isLogged = sessionStorage.isLogged
 
-    if(isLogged) {
-        window.location.href = '/pages/dashboard/index.html'
-    }
+  console.log(typeof isLogged, isLogged)
+
+  if(isLogged == 'true' && window.location.href != '/pages/dashboard/index.html') {
+    window.location.href = '/pages/dashboard/index.html'
+  }
 }

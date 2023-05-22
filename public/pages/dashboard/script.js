@@ -1,5 +1,4 @@
-var userData = Boolean(sessionStorage.getItem('isLogged'))
-console.log(userData)
+isLogged()
 
 var spans = document.querySelectorAll('.link-side-bar > span')
 

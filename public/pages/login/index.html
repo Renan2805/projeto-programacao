@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="../../utils/funcoes.js"></script>
   <title>Login</title>
 </head>
 <body>
@@ -47,6 +48,7 @@
     </div>
   </main>
   <script>
+
     document.getElementById("btn_login").addEventListener("click", (e) => {
       e.preventDefault();
       fetch("/usuarios/autenticar", {
@@ -65,7 +67,7 @@
           }
         }).then((data) => {
           console.log('data', data)
-          sessionStorage.setItem('isLogged', true)
+          sessionStorage.setItem('isLogged', 'true')
           sessionStorage.setItem('userData', JSON.stringify(data))
 
           setTimeout(() => window.location.href = '/pages/dashboard/index.html', 1000)

@@ -21,9 +21,11 @@ create table dadosPessoais (
 create table linguagem (
     idLinguagem int primary key auto_increment,
     nome varchar(45) not null,
-    tipo varchar(45) constraint chkTipo check (tipo in ('compilada', 'interpretada')),
+    tipo varchar(45),
     urlImagem text
 );
+
+alter table linguagem add constraint chkTipo check (tipo in ('compilada', 'interpretada'));
 
 create table linguagemUsuario (
     fkUsuario int,

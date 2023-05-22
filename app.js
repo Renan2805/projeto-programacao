@@ -30,8 +30,8 @@ app.get('/cadastrar', (_req, res) => res.sendFile(path.join(__dirname + '/public
 
 app.listen(PORTA, () => {
   console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
-    Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n
-    Se "desenvolvimento", você está se conectando ao banco LOCAL (MySQL Workbench). \n
-    Se "producao", você está se conectando ao banco REMOTO (SQL Server em nuvem Azure) \n
-    Para alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'`);
+  Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n
+  Se "desenvolvimento", você está se conectando ao banco LOCAL (MySQL Workbench). \n
+  Se "producao", você está se conectando ao banco REMOTO (SQL Server em nuvem Azure) \n
+  Para alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'`);
 });
