@@ -4,27 +4,38 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <link rel="stylesheet" href="style.css">
+  <title>Dashboard</title>
 </head>
 <body>
-  <div id="div_teste">ABC</div>
-  <script>
-
-    document.title = `Dashboard | ${sessionStorage.getItem('NOME_USUARIO')}`
-
-    fetch('/usuarios/dadosUsuario', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        id: sessionStorage.getItem("ID_USUARIO")
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      div_teste.innerHTML = `Nome Completo: ${data[0].nome} ${data[0].sobrenome}`
-    })
-  </script> 
+  <main>
+    <div class="side-bar" id="side_bar">
+      <ul>
+        <li class="link-side-bar">
+          <img src="./assets/svg/bar-chart-fill.svg" alt="Bar icon">
+          <span>Dashboard</span>
+        </li>
+        <li class="link-side-bar">
+          <img src="./assets/svg/lightbulb-fill.svg" alt="Bar icon">
+          <span>Quiz</span>
+        </li>
+        <li class="link-side-bar">
+          <img src="./assets/svg/trophy-fill.svg" alt="Bar icon">
+          <span>Placar de lideres</span>
+        </li>
+      </ul>
+      <ul>
+        <li class="link-side-bar">
+          <img src="./assets/svg/gear-fill.svg" alt="Bar icon">
+          <span>Configurações</span>
+        </li>
+        <li class="link-side-bar">
+          <img src="./assets/svg/arrow-left-circle-fill.svg" alt="Bar icon">
+          <span>Sair</span>
+        </li>
+      </ul>
+    </div>
+  </main> 
+  <script src="script.js"></script>
 </body>
 </html>
