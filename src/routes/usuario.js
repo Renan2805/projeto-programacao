@@ -20,7 +20,12 @@ router.post("/autenticar", (req, res) => {
   usuarioController.entrar(req, res);
 });
 
-router.post('/dadosUsuario', (req, res) => {
+router.get('/:idUsuario', (req, res) => {
   usuarioController.fetchDados(req, res)
 })
+
+router.get('/tentativas/:idUsuario', (req, res) => {
+  usuarioController.tentativas(req, res)
+})
+
 module.exports = router;

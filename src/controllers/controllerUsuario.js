@@ -93,9 +93,9 @@ function cadastrar(req, res) {
 }
 
 function fetchDados(req, res) {
-  var idUsuario = req.body.id
+  var idUsuario = req.params.idUsuario
 
-  console.log('idUser: ' + JSON.stringify(req.body))
+  console.log('idUser: ' + JSON.stringify(req.params))
   if(idUsuario == undefined) {
     res.status(400).send('Seu id está undefined')
   } else {
@@ -109,10 +109,17 @@ function fetchDados(req, res) {
   }
 }
 
+function tentativas(req, res) {
+  const id = req.params.idUsuario
+
+  usuarioModel.tentativas(id).then(resultado => res.json(resultado))
+}
+
 module.exports = {
   entrar,
   cadastrar,
   listar,
   testar,
-  fetchDados
+  fetchDados,
+  tentativas
 }

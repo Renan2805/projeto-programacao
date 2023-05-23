@@ -35,18 +35,26 @@ create table linguagemUsuario (
     constraint pkComposta primary key (fkUsuario, fkLinguagem)
 );
 
+create table quiz (
+    idQuiz int primary key auto_increment,
+    nome varchar(45)
+);
+
 create table tentativa (
     idTentativa int primary key auto_increment,
     pontuacao float not null,
+    tempo decimal(5, 3),
+    fkQuiz int,
     fkUsuario int,
+    foreign key (fkQuiz) references quiz(idQuiz),
     foreign key (fkUsuario) references usuario(idUsuario)
 );
 
 create table questao (
     idQuestao int primary key auto_increment,
     enunciado varchar(300) not null,
-    fkTentativa int,
-    foreign key (fkTentativa) references tentativa(idTentativa)
+    fkQuiz int,
+    foreign key (fkQuiz) references quiz(idQuiz)
 );
 
 create table alternativa (

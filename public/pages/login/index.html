@@ -48,7 +48,7 @@
     </div>
   </main>
   <script>
-
+    isLogged()
     document.getElementById("btn_login").addEventListener("click", (e) => {
       e.preventDefault();
       fetch("/usuarios/autenticar", {

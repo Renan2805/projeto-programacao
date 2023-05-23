@@ -21,8 +21,8 @@ var sqlServerConfig = {
 var mySqlConfig = {
   host: "localhost",
   database: "projeto_programacao",
-  user: "root",
-  password: "",
+  user: "aluno",
+  password: "sptech",
 };
 
 function executar(instrucao) {
@@ -32,7 +32,6 @@ function executar(instrucao) {
       sql.connect(sqlServerConfig).then(() => {
         return sql.query(instrucao);
       }).then((resultados) => {
-        console.log(resultados);
         resolve(resultados.recordset);
       }).catch((erro) => {
         reject(erro);

@@ -35,7 +35,14 @@ function fetchDados(id) {
 
   var instrucao = `SELECT * FROM dadosPessoais where fkUsuario = ${id};`
 
-  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao)
+}
+
+function tentativas(id) {
+  var instrucao = `
+    SELECT idTentativa, q.nome, pontuacao, tempo FROM tentativa JOIN quiz q ON fkQuiz = idQuiz WHERE fkUsuario = ${id} LIMIT 10;
+  `
+
   return database.executar(instrucao)
 }
 
@@ -43,5 +50,6 @@ module.exports = {
   entrar,
   cadastrar,
   listar,
-  fetchDados
+  fetchDados,
+  tentativas
 };
