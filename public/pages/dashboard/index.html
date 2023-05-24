@@ -39,7 +39,7 @@
     </div>
     <div class="dash">
       <div class="welcome">
-        <h1>Olá Renan!</h1>
+        <h1></h1>
         <span>23/05/2023 21:12</span>
       </div>
       <div class="tentativas card-dashboard">
@@ -63,6 +63,19 @@
       </div>
     </div>
   </main>
+  <div id="modal_cadastro" style="display: none;">
+    <form id="form_cadastro" action="" method="post">
+      <h1>Finalize seu Cadastro!</h1>
+      <div class="input-wrapper">
+        <input type="text" id="ipt_nome" name="nome" placeholder="Nome" class="form-input" required>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" id="ipt_sobrenome" name="sobrenome" placeholder="Sobrenome" class="form-input" required>
+      </div>
+      <button type="submit">FINALIZAR CADASTRO</button>
+      <button id="btn_sair" style="width: fit-content; background-color: transparent; border: 2px solid var(--accent-100); color: var(--accent-100); margin-bottom: 0; align-self: center;">SAIR</button>
+    </form>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

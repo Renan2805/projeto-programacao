@@ -5,16 +5,27 @@ var sessionUserData = JSON.parse(sessionStorage.getItem('userData'))
 
 getUserData(sessionUserData.idUsuario)
 
+const formCadastro = document.getElementById('form_cadastro')
+const modal = document.getElementById('modal_cadastro')
+
 async function getUserData(userId) {
   try {
     const user = await fetch(`/usuarios/${userId}`).then(res => res.json())
+    console.log(user)
+
+    if(user.length == 0) {
+      modal.style.display = 'flex'
+      validarCadastro()
+      return
+    }
 
     const h1NomeUsuario = document.querySelector('.welcome > h1')
     h1NomeUsuario.innerText = `Olá ${user[0].nome} ${user[0].sobrenome}.`
 
+
+    // Relógio da dashboard
     const spanData = document.querySelector('.welcome > span')
     spanData.innerText = new Date().toLocaleString('pt-BR')
-
     setInterval(() => spanData.innerText = new Date().toLocaleString('pt-BR'), 1000)
 
     var tentativas = await fetch(`/usuarios/tentativas/${userId}`).then(res => res.json())
@@ -52,6 +63,10 @@ async function getUserData(userId) {
   } catch (error) {
     console.error('ERRO! ', error)
   }
+}
+
+function finalizarCadastro(userId) {
+
 }
 
 function renderTentativas(tentativas) {
@@ -108,8 +123,18 @@ sideBar.addEventListener('mouseleave', () => {
   spans.forEach(span => span.classList.remove('side-bar-text-shown'))
 })
 
-document.getElementById('btn_sair').addEventListener('click', () => {
+document.querySelectorAll('#btn_sair').forEach(btn => btn.addEventListener('click', () => {
   sessionStorage.removeItem('userData')
   sessionStorage.setItem('isLogged', false)
   window.location.href = '/'
-})
+}))
+
+
+
+function validarCadastro() {
+  console.log(formCadastro)
+  var nome = formCadastro[0].value
+  var sobrenome = formCadastro[1].value
+
+  console.log(nome, sobrenome)
+}

@@ -1,8 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700;900&display=swap');
+
+:root {
+  --header-height: 80px;
+
+  --primary-100:#00ADB5;
+  --primary-200:#AAE3E2;
+  --primary-300:#fdf6fd;
+  --accent-100:#AC7DD2;
+  --accent-200:#fff4ff;
+  --text-100:#EEEEEE;
+  --text-200:#C5C5C5;
+  --text-300:#4A4A4A;
+  --bg-100:#222831;
+  --bg-200:#393E46;
+  --bg-300:#454e59;
+  --bg-400: #D9D9D9;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  position: relative;
 }
 
 main {
@@ -11,7 +33,94 @@ main {
   justify-content: flex-start;
 
   background-color: #252525;
+  z-index: 0;
 }
+#modal_cadastro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #25252510;
+  backdrop-filter: blur(5px);
+}
+
+#form_cadastro {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+
+  background-color: #252525;
+  border-radius: .5rem;
+
+  font-family: 'Source Code Pro', monospace;
+  color: #fefefe;
+}
+
+#form_cadastro > h1 {
+  margin: 1rem 0;
+}
+
+#form_cadastro > button {
+  margin: 1rem 0;
+  color: #fefefe;
+  font-size: 22px;
+  font-weight: 700;
+
+
+  padding: .5rem 2rem;
+  background-color: var(--accent-100);
+
+  border: 0;
+  border-radius: .5rem;
+  transition: 300ms;
+}
+
+#form_cadastro > button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.input-wrapper {
+  position: relative;
+  font-size: 20px;
+  height: fit-content;
+}
+
+.input-wrapper a,
+.input-wrapper a:visited {
+  color: rgba(255, 255, 255, .6);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.input-wrapper a:hover {
+  color: var(--text-200);
+}
+
+.form-input {
+  width: 100%;
+
+  padding: .8rem;
+  margin-bottom: 2rem;
+  outline: none;
+  font-size: 20px;
+  color: var(--text-200);
+
+  background: none;
+
+  border: 0;
+  border-bottom: var(--accent-100) 2px solid;
+}
+
 
 /* Side bar styles */
 .side-bar {
