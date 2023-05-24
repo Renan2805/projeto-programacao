@@ -2,17 +2,27 @@
 isLogged()
 
 var sessionUserData = JSON.parse(sessionStorage.getItem('userData'))
-console.log(sessionUserData)
 
 getUserData(sessionUserData.idUsuario)
 
 async function getUserData(userId) {
   try {
     const user = await fetch(`/usuarios/${userId}`).then(res => res.json())
-    const tentativas = await fetch(`/usuarios/tentativas/${userId}`).then(res => res.json())
+
+    const h1NomeUsuario = document.querySelector('.welcome > h1')
+    h1NomeUsuario.innerText = `Olá ${user[0].nome} ${user[0].sobrenome}.`
+
+    const spanData = document.querySelector('.welcome > span')
+    spanData.innerText = new Date().toLocaleString('pt-BR')
+
+    setInterval(() => spanData.innerText = new Date().toLocaleString('pt-BR'), 1000)
+
+    var tentativas = await fetch(`/usuarios/tentativas/${userId}`).then(res => res.json())
     renderTentativas(tentativas)
 
-    const dadosGraficoPizza = await fetch(`/analytcs/qtdNotas/${userId}`).then(res => res.json())
+    Chart.defaults.color = '#FEFEFE';
+
+    var dadosGraficoPizza = await fetch(`/analytcs/qtdNotas/${userId}`).then(res => res.json())
     var chartPizza = criarGrafico(document.getElementById('chart-pizza'), {
       type: 'pie',
       data: {
@@ -20,19 +30,24 @@ async function getUserData(userId) {
         datasets: [{
           label: 'Quantidade de notas',
           data: [],
+          color: '#FEFEFE',
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            '#AC7DD2',
+            '#D9D9D9',
+            '#00ADB5'
           ],
           hoverOffset: 4
         }]
       }
     }, dadosGraficoPizza)
 
-    setInterval(() => {
-      updateGrafico(chartPizza, dadosGraficoPizza)
-    }, 2000);
+    setInterval(async () => {
+      dadosGraficoPizza = await fetch(`/analytcs/qtdNotas/${userId}`).then(res => res.json())
+      chartPizza.updateDados(dadosGraficoPizza)
+
+      tentativas = await fetch(`/usuarios/tentativas/${userId}`).then(res => res.json())
+      renderTentativas(tentativas)
+    }, 5000)
 
   } catch (error) {
     console.error('ERRO! ', error)
@@ -43,6 +58,12 @@ function renderTentativas(tentativas) {
   const table = document.getElementById('lista-tentativas')
   
   table.innerHTML = ''
+
+  if(tentativas.length == 0) {
+    table.innerHTML = '<tr><td></td><td>Nenhuma tentativa</td><td></td></tr>'
+    return
+  }
+
   tentativas.forEach(t => {
     table.innerHTML += `
       <tr>
@@ -61,16 +82,14 @@ function criarGrafico(ctx, options, dados) {
   g.data.datasets[0].data = dados.map(d => d.dado)
   g.update()
 
-  return g
-}
-
-function updateGrafico(grafico, dados) {
-
-  if(grafico.data.datasets[0].data != dados.map(d => d.dado)) {
-    grafico.data.labels = dados.map(d => d.label.toString())
-    grafico.data.datasets[0].data = dados.map(d => d.dado)
-    grafico.update()
+  // Atribui uma função para atualizar o grafico com dados mais recentes
+  g.updateDados = function(dados) {
+    this.data.labels = dados.map(d => d.label.toString())
+    this.data.datasets[0].data = dados.map(d => d.dado)
+    this.update()
   }
+
+  return g
 }
 
 
