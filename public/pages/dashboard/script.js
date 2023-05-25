@@ -1,5 +1,6 @@
 // If the user is not logged, redirect to the index page
 isLogged()
+setInterval(isLogged, 1000)
 
 var sessionUserData = JSON.parse(sessionStorage.getItem('userData'))
 
@@ -11,11 +12,9 @@ const modal = document.getElementById('modal_cadastro')
 async function getUserData(userId) {
   try {
     const user = await fetch(`/usuarios/${userId}`).then(res => res.json())
-    console.log(user)
 
     if(user.length == 0) {
       modal.style.display = 'flex'
-      validarCadastro()
       return
     }
 
@@ -66,7 +65,36 @@ async function getUserData(userId) {
 }
 
 function finalizarCadastro(userId) {
+  try {
+    const nome = formCadastro[0].value
+    const sobrenome = formCadastro[1].value
 
+    if(nome == '' || sobrenome == '') {
+      alert('Insira o seu nome e sobrenome')
+      return
+    }
+
+    fetch('/usuarios/finalizar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        idUsuario: userId,
+        nome: nome,
+        sobrenome: sobrenome
+      })
+    }).then(res => {
+      if(res.ok) {
+        return res.json()
+      } else alert('Erro ao cadastrar')
+    }).then(d => {
+      modal.style.display = 'none'
+      getUserData(userId)
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 function renderTentativas(tentativas) {
@@ -129,12 +157,7 @@ document.querySelectorAll('#btn_sair').forEach(btn => btn.addEventListener('clic
   window.location.href = '/'
 }))
 
-
-
-function validarCadastro() {
-  console.log(formCadastro)
-  var nome = formCadastro[0].value
-  var sobrenome = formCadastro[1].value
-
-  console.log(nome, sobrenome)
-}
+document.getElementById('btn_finalizar').addEventListener('click', (e) => {
+  e.preventDefault()
+  finalizarCadastro(sessionUserData.idUsuario)
+})

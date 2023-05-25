@@ -46,10 +46,16 @@ function tentativas(id) {
   return database.executar(instrucao)
 }
 
+function finalizar(id, nome, sobrenome) {
+  var instrucao = `INSERT INTO dadosPessoais VALUES (1, '${nome}', '${sobrenome}', ${id});`
+  return database.executar(instrucao)
+}
+
 module.exports = {
   entrar,
   cadastrar,
   listar,
   fetchDados,
-  tentativas
+  tentativas,
+  finalizar
 };

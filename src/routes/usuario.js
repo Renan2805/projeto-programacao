@@ -16,6 +16,10 @@ router.post("/cadastrar", (req, res) => {
   usuarioController.cadastrar(req, res);
 })
 
+router.post('/finalizar', (req, res) => {
+  usuarioController.finalizar(req, res)
+})
+
 router.post("/autenticar", (req, res) => {
   usuarioController.entrar(req, res);
 });

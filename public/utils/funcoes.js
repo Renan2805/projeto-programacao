@@ -1,11 +1,7 @@
 function isLogged() {
-  const isLogged = sessionStorage.isLogged
+  const isLogged = sessionStorage.isLogged == 'true' ? true : false
 
-  console.log(typeof isLogged, isLogged)
-
-  console.log(window.location.href)
-
-  if(isLogged == 'true' && window.location.href != 'http://localhost:3333/pages/dashboard/index.html') {
+  if(isLogged && window.location.href != 'http://localhost:3333/pages/dashboard/index.html') {
     window.location.href = '/pages/dashboard/index.html'
     return
   }
@@ -16,9 +12,8 @@ function isLogged() {
     'http://localhost:3333/cadastrar'
   ]
 
-  if(isLogged == 'false' && !notLoggedPages.includes(window.location.href)) {
+  if(!isLogged && !notLoggedPages.includes(window.location.href)) {
     window.location.href = '/'
-    console.log('aaaaaaa')
     return
   }
 }

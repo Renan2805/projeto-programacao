@@ -73,6 +73,7 @@
   <script>
     console.log(sessionStorage.getItem('isLogged'))
     isLogged()
+    setInterval(isLogged, 1000)
 
     function typeEffect(element, text = '', speed = 150) {
       element.innerText = ''

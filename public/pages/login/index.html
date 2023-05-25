@@ -49,6 +49,7 @@
   </main>
   <script>
     isLogged()
+    setInterval(isLogged, 1000)
     document.getElementById("btn_login").addEventListener("click", (e) => {
       e.preventDefault();
       fetch("/usuarios/autenticar", {
@@ -67,10 +68,14 @@
           }
         }).then((data) => {
           console.log('data', data)
-          sessionStorage.setItem('isLogged', 'true')
-          sessionStorage.setItem('userData', JSON.stringify(data))
-
-          setTimeout(() => window.location.href = '/pages/dashboard/index.html', 1000)
+          if(data == undefined) {
+            alert('Usuario ou senha inválidos')
+          } else {
+            sessionStorage.setItem('isLogged', 'true')
+            sessionStorage.setItem('userData', JSON.stringify(data))
+  
+            setTimeout(() => window.location.href = '/pages/dashboard/index.html', 1000)
+          }
         })
         .catch((err) => console.error(err));
     });

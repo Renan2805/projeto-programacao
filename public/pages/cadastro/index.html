@@ -9,9 +9,6 @@
     <title>Cadastro</title>
   </head>
   <body>
-    <div class="loader">
-      <div class="loader">Loading...</div>
-    </div>
     <header>
       <ul>
         <li>
@@ -87,7 +84,8 @@
       </div>
     </main>
     <script>
-      isLogged();
+      isLogged()
+      setInterval(isLogged, 1000)
       document.getElementById("btn_cadastro").addEventListener("click", (e) => {
         e.preventDefault();
         const nome = ipt_user.value;
@@ -111,7 +109,8 @@
           }).then(res => res)
 
           if(respostaInsert.ok) {
-            entrar(nome, senha)
+            alert('Cadastrado com sucesso!')
+            setTimeout(() => entrar(nome, senha), 1000)
           }
     
         } catch(e) {
@@ -134,7 +133,7 @@
               })
             }).then(res => res.json())
 
-            console.log(dadosUsuario)
+          console.log(dadosUsuario)
           sessionStorage.setItem('isLogged', 'true')
           sessionStorage.setItem('userData', JSON.stringify(dadosUsuario))
           

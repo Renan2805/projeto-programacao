@@ -115,11 +115,20 @@ function tentativas(req, res) {
   usuarioModel.tentativas(id).then(resultado => res.json(resultado))
 }
 
+function finalizar(req, res) {
+  const id = req.body.idUsuario
+  const nome = req.body.nome
+  const sobrenome = req.body.sobrenome
+
+  usuarioModel.finalizar(id, nome, sobrenome).then(resposta => res.json(resposta))
+}
+
 module.exports = {
   entrar,
   cadastrar,
   listar,
   testar,
   fetchDados,
-  tentativas
+  tentativas,
+  finalizar
 }
