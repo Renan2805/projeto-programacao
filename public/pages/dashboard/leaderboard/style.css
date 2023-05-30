@@ -1,0 +1,56 @@
+.content {
+  background-color: #fefefe;
+  border-radius: 1rem 0 0 1rem;
+
+  inline-size: 100%;
+  padding: 1rem;
+}
+
+.table-placar {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 24px;
+  text-align: center;
+
+  width: 80%;
+}
+
+.table-placar tr {
+  margin: 0 1rem;
+}
+
+.table-placar > thead > tr {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fefefe;
+}
+.table-placar > tbody > tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, .2);
+}
+.table-placar > tbody > tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.filtros {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filtros > select {
+  padding: .5rem 1rem;
+}
+
+.filtros > button {
+  padding: .5rem 1rem;
+  width: calc(9ch + 2rem);
+  cursor: pointer;
+
+  border: 0;
+  border-radius: .3rem;
+  font-weight: 700;
+
+}
+
+.filtros > span {
+  font-family: 'Fira Code',monospace;
+  height: fit-content;
+}

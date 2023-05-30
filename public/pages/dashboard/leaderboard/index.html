@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>Placar de lideres</title>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Dashboard</title>
+</head>
+<body>
+  <main>
+    <div class="side-bar" id="side_bar">
+      <ul>
+        <li class="link-side-bar">
+          <img src="../assets/svg/bar-chart-fill.svg" alt="Bar icon">
+          <span>Dashboard</span>
+        </li>
+        <li class="link-side-bar">
+          <img src="../assets/svg/lightbulb-fill.svg" alt="Bar icon">
+          <span>Quiz</span>
+        </li>
+        <li class="link-side-bar">
+          <img src="../assets/svg/trophy-fill.svg" alt="Bar icon">
+          <span>Placar de lideres</span>
+        </li>
+      </ul>
+      <ul>
+        <li class="link-side-bar">
+          <img src="../assets/svg/gear-fill.svg" alt="Bar icon">
+          <span>Configurações</span>
+        </li>
+        <li class="link-side-bar" id="btn_sair">
+          <img src="../assets/svg/arrow-left-circle-fill.svg" alt="Bar icon">
+          <span>Sair</span>
+        </li>
+      </ul>
+    </div>
+    <div class="content" id="content">
+      <div class="filtros">
+        <select name="quiz" id="select_quiz">
+          <option value="1">Quiz JS 1</option> 
+          <option value="2">Quiz JS 2</option> 
+          <option value="3">Quiz JS 3</option> 
+        </select>
+        <span>Ordenar por</span>
+        <button onclick="alternar()" id="btn_ordem">Tempo</button>
+        <button onclick="aplicarFiltros()" id="btn_aplicar">Aplicar</button>
+      </div>
+      <table class="table-placar">
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Nome</th>
+            <th>Tempo</th>
+            <th>Pontuação</th>
+          </tr>
+        </thead>
+        <tbody id="table_body">
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>
