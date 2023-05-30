@@ -1,4 +1,5 @@
 localStorage.setItem('ordem', 'tempo')
+var user = JSON.parse(sessionStorage.getItem('userData'))
 
 function alternar() {
   var ordemAtual = localStorage.getItem('ordem')
@@ -23,11 +24,11 @@ function aplicarFiltros() {
     table_body.innerHTML = ''
     data.forEach((r, i) => {
       table_body.innerHTML += `
-        <tr>
+        <tr style="color: ${user.nomeUsuario == r.nomeUsuario ? '#6C63FF' : '#000000'}">
           <td>${i + 1}º</td>
           <td>${r.nomeUsuario}</td>
-          <td>${r.tempo}</td>
-          <td>${r.pontuacao}</td>
+          <td>${r.tempo}s</td>
+          <td>${r.pontuacao}/10</td>
         </tr>
       `
     })
@@ -57,3 +58,5 @@ document.querySelectorAll('#btn_sair').forEach(btn => btn.addEventListener('clic
   sessionStorage.setItem('isLogged', false)
   window.location.href = '/'
 }))
+
+aplicarFiltros()

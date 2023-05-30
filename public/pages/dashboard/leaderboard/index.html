@@ -9,20 +9,10 @@
   <title>Placar de lideres</title>
 </head>
 <body>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Dashboard</title>
-</head>
-<body>
   <main>
     <div class="side-bar" id="side_bar">
       <ul>
-        <li class="link-side-bar">
+        <li class="link-side-bar" onclick="window.location.href = '/pages/dashboard/index.html'">
           <img src="../assets/svg/bar-chart-fill.svg" alt="Bar icon">
           <span>Dashboard</span>
         </li>
@@ -48,27 +38,29 @@
     </div>
     <div class="content" id="content">
       <div class="filtros">
-        <select name="quiz" id="select_quiz">
+        <select name="quiz" id="select_quiz" onchange="aplicarFiltros()">
           <option value="1">Quiz JS 1</option> 
           <option value="2">Quiz JS 2</option> 
           <option value="3">Quiz JS 3</option> 
         </select>
         <span>Ordenar por</span>
-        <button onclick="alternar()" id="btn_ordem">Tempo</button>
-        <button onclick="aplicarFiltros()" id="btn_aplicar">Aplicar</button>
+        <button onclick="alternar()" id="btn_ordem" style="border: 2px solid #6C63FF; color: #6C63FF; background-color: transparent;">Tempo</button>
+        <button onclick="aplicarFiltros()" id="btn_aplicar" style="border: 2px solid #6C63FF; background-color: #6C63FF; color: #fefefe">Aplicar</button>
       </div>
-      <table class="table-placar">
-        <thead>
-          <tr>
-            <th>Posição</th>
-            <th>Nome</th>
-            <th>Tempo</th>
-            <th>Pontuação</th>
-          </tr>
-        </thead>
-        <tbody id="table_body">
-        </tbody>
-      </table>
+      <div class="wrapper-table">
+        <table class="table-placar">
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Usuário</th>
+              <th>Tempo</th>
+              <th>Pontuação</th>
+            </tr>
+          </thead>
+          <tbody id="table_body">
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
   <script src="script.js"></script>
