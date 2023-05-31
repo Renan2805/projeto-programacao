@@ -3,6 +3,10 @@ var router = express.Router();
 
 const controllerQuiz = require('../controllers/controllerQuiz')
 
+router.get('/', (req, res) => {
+  controllerQuiz.getQuizes(req, res)
+})
+
 router.get('/:id', (req, res) => {
   controllerQuiz.getQuiz(req, res)
 })

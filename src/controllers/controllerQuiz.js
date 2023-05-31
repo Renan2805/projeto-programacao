@@ -1,5 +1,10 @@
 const modelQuiz = require('../models/modelQuiz')
 
+function getQuizes(req, res) {
+  const id = req.params.id;
+  modelQuiz.getQuizes(id).then(result => res.json(result))
+}
+
 function getQuiz(req, res) {
   const id = req.params.id;
   modelQuiz.getQuiz(id).then(result => res.json(result))
@@ -16,6 +21,7 @@ function getAlternativas(req, res) {
 }
 
 module.exports = {
+  getQuizes,
   getQuiz,
   getQuestoes,
   getAlternativas

@@ -1,5 +1,10 @@
 const database = require('../database/config')
 
+function getQuizes() {
+  var instrucao = `SELECT * FROM quiz;`
+  return database.executar(instrucao)
+}
+
 function getQuiz(id) {
   var instrucao = `SELECT * FROM quiz WHERE idQuiz = ${id};`
   return database.executar(instrucao)
@@ -16,6 +21,7 @@ function getAlternativas(idQuestao) {
 }
 
 module.exports = {
+  getQuizes,
   getQuiz,
   getQuestoes,
   getAlternativas
