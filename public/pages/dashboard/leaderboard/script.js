@@ -24,7 +24,7 @@ function aplicarFiltros() {
     table_body.innerHTML = ''
     data.forEach((r, i) => {
       table_body.innerHTML += `
-        <tr style="color: ${user.nomeUsuario == r.nomeUsuario ? '#6C63FF' : '#000000'}">
+        <tr style="color: ${user.nomeUsuario == r.nomeUsuario ? '#6C63FF' : '#000000'}; font-weight: ${user.nomeUsuario == r.nomeUsuario ? '700' : '400'};">
           <td>${i + 1}º</td>
           <td>${r.nomeUsuario}</td>
           <td>${r.tempo}s</td>

@@ -13,6 +13,7 @@ var usuarioRouter = require("./src/routes/usuario");
 var analytcsRouter = require('./src/routes/analytcs')
 var leaderboardRouter = require('./src/routes/leaderboard')
 var quizRouter = require('./src/routes/quiz')
+var linguagemRouter = require('./src/routes/linguagem')
 // var avisosRouter = require("./src/routes/avisos");
 // var medidasRouter = require("./src/routes/medidas");
 
@@ -27,6 +28,7 @@ app.use("/usuarios", usuarioRouter);
 app.use('/analytcs', analytcsRouter)
 app.use('/leaderboard', leaderboardRouter)
 app.use('/quiz', quizRouter)
+app.use('/linguagens', linguagemRouter)
 
 app.use(express.static(path.join(__dirname, "/public/pages/login/")));
 app.get('/login', (_req, res) => res.sendFile(path.join(__dirname + '/public/pages/login/index.html')))

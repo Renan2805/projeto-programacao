@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  text-align: center;
+  color: #fefefe;
+  background-color: #252525;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper-questao {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.wrapper-questao > h1 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.respostas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.respostas > button {
+  font-family: 'Fira Code', monospace;
+  font-weight: 700;
+
+  width: calc(50% - 1rem);
+  height: 100px;
+  cursor: pointer;
+  background-color: #252525;
+
+  border: 2px solid #6C63FF;
+  border-radius: .5rem;
+  color: #fefefe;
+  padding: 1rem;
+
+
+
+  transition: 300ms;
+}
+
+.respostas > button:hover {
+  filter: brightness(.8);
+}
+
+.respostas > button:disabled {
+  color: #fefefe;
+}
+
+.certo {
+  border-color: #37cf8d !important;
+  box-shadow: 0px 0px 15px 0px #37cf8d;
+}
+
+.errado {
+  border-color: #cf3737 !important;
+  box-shadow: 0px 0px 15px 0px #cf3737;
+}
+
+.wrapper-tempo {
+  margin: 1rem;
+}

@@ -9,8 +9,8 @@ async function fetchQuizesData() {
   return quizes
 }
 
-async function redirectQuiz(id) {
-  const questoes = await fetch(`/quiz/questao/${id}`).then(res => {
+async function redirectQuiz(quiz) {
+  const questoes = await fetch(`/quiz/questao/${quiz.idQuiz}`).then(res => {
     if(res.ok) {
       return res.json()
     }
@@ -28,7 +28,9 @@ async function redirectQuiz(id) {
     questoes[i].alternativas = a
   }
 
-  localStorage.quizAtual = JSON.stringify(questoes)
+  quiz.questoes = questoes
+
+  localStorage.quizAtual = JSON.stringify(quiz)
   window.location.href = '/pages/dashboard/quiz/index.html'
 }
 
@@ -37,13 +39,25 @@ function renderQuizes() {
 
   fetchQuizesData().then(data => {
     data.forEach(quiz => {
-      divWrapper.innerHTML += `
-        <div class="quiz">
-          <p>${quiz.dificuldade}</p>
-          <h1>${quiz.nome}</h1>
-          <button onclick="redirectQuiz(${quiz.idQuiz})">INICIAR</button>
-        </div>
-      `
+
+      const divQuiz = document.createElement('div')
+      divQuiz.classList.add('quiz')
+
+      const pQuiz = document.createElement('p')
+      pQuiz.innerText = quiz.dificuldade
+      divQuiz.appendChild(pQuiz)
+
+      const h1Quiz = document.createElement('h1')
+      h1Quiz.innerText = quiz.nome
+      divQuiz.appendChild(h1Quiz)
+
+      const btnQuiz = document.createElement('button')
+      btnQuiz.innerText = 'INICIAR'
+      btnQuiz.addEventListener('click', () => redirectQuiz(quiz))
+      divQuiz.appendChild(btnQuiz)
+
+      divWrapper.appendChild(divQuiz)
+
     })
   })
 }

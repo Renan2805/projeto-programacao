@@ -20,9 +20,21 @@ function getAlternativas(req, res) {
   modelQuiz.getAlternativas(id).then(result => res.json(result))
 }
 
+function inserirTentativa(req, res) {
+  const pontuacao = req.body.pontuacao
+  const tempo = req.body.tempo
+  const idQuiz = req.body.idQuiz
+  const idUsuario = req.body.idUsuario
+
+  modelQuiz.inserirTentativa(pontuacao, tempo, idQuiz, idUsuario).then(result => {
+    res.json(result)
+  })
+}
+
 module.exports = {
   getQuizes,
   getQuiz,
   getQuestoes,
-  getAlternativas
+  getAlternativas,
+  inserirTentativa
 }

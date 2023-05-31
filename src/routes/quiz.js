@@ -19,4 +19,8 @@ router.get('/alternativas/:id', (req, res) => {
   controllerQuiz.getAlternativas(req, res)
 })
 
+router.post('/inserir-tentativa', (req, res) => {
+  controllerQuiz.inserirTentativa(req, res)
+})
+
 module.exports = router

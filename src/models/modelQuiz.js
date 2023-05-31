@@ -20,9 +20,15 @@ function getAlternativas(idQuestao) {
   return database.executar(instrucao)
 }
 
+function inserirTentativa(pontuacao, tempo, idQuiz, idUsuario) {
+  var instrucao = `INSERT INTO tentativa (pontuacao, tempo, fkQuiz, fkUsuario) VALUES (${pontuacao}, ${tempo}, ${idQuiz}, ${idUsuario});`
+  return database.executar(instrucao)
+}
+
 module.exports = {
   getQuizes,
   getQuiz,
   getQuestoes,
-  getAlternativas
+  getAlternativas,
+  inserirTentativa
 }
