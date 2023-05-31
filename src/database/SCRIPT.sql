@@ -1,5 +1,6 @@
 drop database if exists projeto_programacao;
 create database if not exists projeto_programacao;
+ALTER DATABASE projeto_programacao CHARSET = UTF8 COLLATE = utf8_general_ci;
 use projeto_programacao;
 
 create table usuario (
@@ -37,7 +38,8 @@ create table linguagemUsuario (
 
 create table quiz (
     idQuiz int primary key auto_increment,
-    nome varchar(45)
+    nome varchar(45),
+    dificuldade varchar(45) constraint chkDiff check (dificuldade in ('facil', 'medio', 'dificil'))
 );
 
 create table tentativa (

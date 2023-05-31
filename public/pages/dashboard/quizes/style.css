@@ -1,0 +1,9 @@
+.content {
+  background-color: #fefefe;
+  border-radius: 1rem 0 0 1rem;
+
+  inline-size: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}

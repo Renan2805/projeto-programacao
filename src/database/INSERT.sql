@@ -16,9 +16,9 @@ insert into linguagemUsuario values
     (2, 1);
 
 insert into quiz values
-    (null, 'Javascript 1'),
-    (null, 'Javascript 2'),
-    (null, 'Javascript 3');
+    (null, 'Javascript 1', 'facil'),
+    (null, 'Javascript 2', 'medio'),
+    (null, 'Javascript 3', 'dificil');
 
 insert into tentativa values
     (null, 0, 60.000, 1, 1),
