@@ -55,13 +55,12 @@ create table questao (
     enunciado varchar(300) not null,
     fkQuiz int,
     foreign key (fkQuiz) references quiz(idQuiz)
-);
+) auto_increment = 1000;
 
 create table alternativa (
     idAlternativa int,
     texto varchar(200),
     certa boolean,
-    imagem text,
     fkQuestao int,
     foreign key (fkQuestao) references questao(idQuestao),
     constraint pkAlternativa primary key (idAlternativa, fkQuestao)
