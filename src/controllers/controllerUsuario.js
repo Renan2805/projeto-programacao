@@ -123,6 +123,22 @@ function finalizar(req, res) {
   usuarioModel.finalizar(id, nome, sobrenome).then(resposta => res.json(resposta))
 }
 
+function atualizarNome(req, res) {
+  const id = req.body.idUsuario
+  const nome = req.body.nome
+
+  if(id == undefined) {
+    res.status(400).send('Seu id está undefined')
+  } else if(nome == undefined) {
+    res.status(400).send('Seu nome está undefined')
+  } else {
+    usuarioModel.atualizarNome(id, nome)
+      .then(result => res.status(200).json(result))
+      .catch(e => res.status(500).json(e))
+  }
+
+}
+
 module.exports = {
   entrar,
   cadastrar,
@@ -130,5 +146,6 @@ module.exports = {
   testar,
   fetchDados,
   tentativas,
-  finalizar
+  finalizar,
+  atualizarNome
 }

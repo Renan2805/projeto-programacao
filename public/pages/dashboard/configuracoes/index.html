@@ -10,7 +10,7 @@
 </head>
 <body>
   <div id="loader">
-    <h1>teste</h1>
+    <h1>Carregando...</h1>
   </div>
   <main>
     <div class="side-bar" id="side_bar">
@@ -19,7 +19,7 @@
           <img src="../assets/svg/bar-chart-fill.svg" alt="Bar icon">
           <span>Dashboard</span>
         </li>
-        <li class="link-side-bar">
+        <li class="link-side-bar" onclick="window.location.href = '/pages/dashboard/quizes/index.html'">
           <img src="../assets/svg/lightbulb-fill.svg" alt="Bar icon">
           <span>Quiz</span>
         </li>
@@ -44,28 +44,40 @@
       <div>
         <div class="user-options">
           <h2>Opções da conta</h2>
+          <div class="wrapper-input">
+            <label for="username">Mudar nome de usuário</label>
+            <input type="text" name="username" id="ipt_username">
+          </div>
+          <button onclick="atualizarNome()" class="btn-aplicar">Aplicar</button>
+          <h3 id="feedback_msg"></h3>
         </div>
         <div class="linguagens">
           <h2>Linguagens Favoritas</h2>
-          <div class="linguagem">
-            <input type="checkbox" name="js" id="ipt_1" onchange="atualizarLinguagens('ipt_1')">
-            <label for="js">Javascript</label>
-          </div>
-          <div class="linguagem">
-            <input type="checkbox" name="cpp" id="ipt_2" onchange="atualizarLinguagens('ipt_2')">
-            <label for="cpp">C++</label>
-          </div>
-          <div class="linguagem">
-            <input type="checkbox" name="py" id="ipt_3" onchange="atualizarLinguagens('ipt_3')">
-            <label for="py">Python</label>
-          </div>
-          <div class="linguagem">
-            <input type="checkbox" name="java" id="ipt_4" onchange="atualizarLinguagens('ipt_4')">
-            <label for="java">Java</label>
-          </div>
-          <div class="linguagem">
-            <input type="checkbox" name="rb" id="ipt_5" onchange="atualizarLinguagens('ipt_5')">
-            <label for="rb">Ruby</label>
+          <div style="margin: 0 1rem;">
+            <div class="linguagem">
+              <input type="checkbox" name="js" id="ipt_1" onchange="atualizarLinguagens('ipt_1')">
+              <label for="js">Javascript</label>
+            </div>
+            <div class="linguagem">
+              <input type="checkbox" name="ts" id="ipt_2" onchange="atualizarLinguagens('ipt_2')">
+              <label for="ts">Typescript</label>
+            </div>
+            <div class="linguagem">
+              <input type="checkbox" name="cpp" id="ipt_3" onchange="atualizarLinguagens('ipt_3')">
+              <label for="cpp">C++</label>
+            </div>
+            <div class="linguagem">
+              <input type="checkbox" name="py" id="ipt_4" onchange="atualizarLinguagens('ipt_4')">
+              <label for="py">Python</label>
+            </div>
+            <div class="linguagem">
+              <input type="checkbox" name="java" id="ipt_5" onchange="atualizarLinguagens('ipt_5')">
+              <label for="java">Java</label>
+            </div>
+            <div class="linguagem">
+              <input type="checkbox" name="rb" id="ipt_6" onchange="atualizarLinguagens('ipt_6')">
+              <label for="rb">Ruby</label>
+            </div>
           </div>
         </div>
       </div>

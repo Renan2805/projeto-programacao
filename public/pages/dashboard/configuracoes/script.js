@@ -1,4 +1,8 @@
 var userData = JSON.parse(sessionStorage.userData)
+ipt_username.value = userData.nomeUsuario
+
+var clearFeedbackInterval;
+
 var loaderShown = false
 loader.style.display = 'none'
 
@@ -39,8 +43,8 @@ function atualizarLinguagens(idIpt) {
 
 }
 
-async function desfavoritarLinguagem(id) {
-  var result = await fetch('/linguagens/desfavoritar', {
+function desfavoritarLinguagem(id) {
+  fetch('/linguagens/desfavoritar', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -51,15 +55,19 @@ async function desfavoritarLinguagem(id) {
     })
   }).then(res => {
     if(res.ok) {
-      res.json()
+      return res.json()
     }
+  }).then(result => {
+    console.log(result)
+    if(result.affectedRows > 0) {
+      alert('ok')
+    }
+    toggleLoader()
   }).catch(e => console.error(e))
-  toggleLoader()
-  console.log(result)
 }
 
-async function favoritarLinguaem(id) {
-  var result = await fetch('/linguagens/favoritar', {
+function favoritarLinguaem(id) {
+  fetch('/linguagens/favoritar', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -70,14 +78,75 @@ async function favoritarLinguaem(id) {
     })
   }).then(res => {
     if(res.ok) {
-      res.json()
+      return res.json()
     }
+  }).then(result => {
+    console.log(result)
+    if(result.affectedRows > 0) {
+      alert('ok')
+    }
+    toggleLoader()
   }).catch(e => console.error(e))
-  toggleLoader()
-  console.log(result)
 }
 
 verificarLinguagens()
+
+async function atualizarNome() {
+  toggleLoader()
+  var nome = ipt_username.value
+
+  if(nome == '' || nome.length < 3) {
+    alert('Username inválido')
+    return
+  }
+
+  if(nome == userData.nomeUsuario) {
+    showFeedbackMessage('Nome de usuario igual ao atual', true)
+    toggleLoader()
+    return
+  }
+
+  var fetchOptions = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      idUsuario: userData.idUsuario,
+      nome: nome
+    })
+  }
+
+  var response = await fetch('/usuarios/atualizar-nome', fetchOptions)
+    .then(res => {
+      if(res.ok) {
+        return res.json()
+      }
+    }).catch(e => console.error(e))
+
+  if(response.changedRows == 1) {
+    alert('nome alterado com sucesso')
+    userData.nomeUsuario = nome
+    console.log(userData)
+    sessionStorage.setItem('userData', JSON.stringify(userData))
+  }
+
+  toggleLoader()
+  console.log(response)
+}
+
+function showFeedbackMessage(message, bad) {
+  if(clearFeedbackInterval) {
+    clearInterval(clearFeedbackInterval)
+  }
+
+  feedback_msg.innerText = message
+  feedback_msg.style.color = bad ? 'red' : 'green'
+
+  clearFeedbackInterval = setTimeout(() => {
+    feedback_msg.innerText = ''
+  }, 5000)
+}
 
 var spans = document.querySelectorAll('.link-side-bar > span')
 

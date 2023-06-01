@@ -12,6 +12,8 @@
 .content > div {
   display: flex;
   justify-content: space-between;
+
+  padding: 1rem;
 }
 
 #loader {
@@ -27,4 +29,48 @@
   align-items: center;
 
   background-color: rgba(0,0,0,.5);
+}
+
+.wrapper-input {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.wrapper-input > input {
+  padding: .5rem;
+
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: .3rem;
+
+  font-family: 'Source Code Pro', monospace;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.wrapper-input > input:focus {
+  outline: 2px solid #6C63FF;
+}
+
+.wrapper-input > label {
+  font-size: 18px;
+}
+
+.btn-aplicar {
+  padding: .5rem 1.5rem;
+
+  border: 2px solid #6C63FF;
+  border-radius: .3rem;
+
+  background-color: #6C63FF;
+
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 700;
+  color: #fefefe;
+
+  cursor: pointer;
+}
+
+.btn-aplicar:hover {
+  filter: brightness(.8);
 }

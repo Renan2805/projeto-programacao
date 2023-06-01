@@ -38,6 +38,11 @@ function fetchDados(id) {
   return database.executar(instrucao)
 }
 
+function atualizarNome(id, nome) {
+  var instrucao = `UPDATE usuario SET nomeUsuario = '${nome}' WHERE idUsuario = ${id};`
+  return database.executar(instrucao)
+} 
+
 function tentativas(id) {
   var instrucao = `
     SELECT idTentativa, q.nome, pontuacao, tempo FROM tentativa JOIN quiz q ON fkQuiz = idQuiz WHERE fkUsuario = ${id} LIMIT 10;
@@ -56,6 +61,7 @@ module.exports = {
   cadastrar,
   listar,
   fetchDados,
+  atualizarNome,
   tentativas,
   finalizar
 };
