@@ -23,8 +23,14 @@ function favoritar(idUsuario, idLinguagem) {
   return database.executar(instrucao)
 }
 
+function linguagensFavoritas() {
+  var instrucao = 'select l.nome label, count(lu.fkLinguagem) as dado from linguagem l join linguagemUsuario lu on idLinguagem = fkLinguagem group by l.nome order by dado desc;'
+  return database.executar(instrucao)
+}
+
 module.exports = {
   linguagensUsuario,
   desfavoritar,
-  favoritar
+  favoritar,
+  linguagensFavoritas
 }

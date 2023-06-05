@@ -45,10 +45,14 @@
         <div class="user-options">
           <h2>Opções da conta</h2>
           <div class="wrapper-input">
-            <label for="username">Mudar nome de usuário</label>
+            <label for="username">Nome de usuário</label>
             <input type="text" name="username" id="ipt_username">
           </div>
-          <button onclick="atualizarNome()" class="btn-aplicar">Aplicar</button>
+          <div class="wrapper-input">
+            <label for="senha">Senha <span style="font-size: 12px;">(deixe vazio caso não queira alterar)</span></label>
+            <input type="text" name="senha" id="ipt_senha">
+          </div>
+          <button onclick="atualizarUsuario()" class="btn-aplicar">Aplicar</button>
           <h3 id="feedback_msg"></h3>
         </div>
         <div class="linguagens">

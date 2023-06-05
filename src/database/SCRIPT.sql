@@ -1,12 +1,10 @@
 drop database if exists projeto_programacao;
 create database if not exists projeto_programacao;
-ALTER DATABASE projeto_programacao CHARSET = UTF8 COLLATE = utf8_general_ci;
 use projeto_programacao;
 
 create table usuario (
     idUsuario int primary key auto_increment,
-    nomeUsuario varchar(45) not null,
-    email varchar(45) not null,
+    nomeUsuario varchar(45) not null unique,
     senha varchar(45) not null
 );
 
@@ -45,7 +43,7 @@ create table quiz (
 create table tentativa (
     idTentativa int primary key auto_increment,
     pontuacao float not null,
-    tempo decimal(5, 3),
+    tempo decimal(6, 3),
     fkQuiz int,
     fkUsuario int,
     foreign key (fkQuiz) references quiz(idQuiz),

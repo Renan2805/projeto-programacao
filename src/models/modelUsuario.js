@@ -12,20 +12,20 @@ function listar() {
 function entrar(user, senha) {
   console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", user, senha)
   var instrucao = `
-        SELECT idUsuario, nomeUsuario, email FROM usuario WHERE nomeUsuario = '${user}' AND senha = '${senha}';
+        SELECT idUsuario, nomeUsuario, senha FROM usuario WHERE nomeUsuario = '${user}' AND senha = '${senha}';
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrar(user, email, senha) {
-  console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", user, email, senha);
+function cadastrar(user, senha) {
+  console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", user, senha);
 
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
   var instrucao = `
-        INSERT INTO usuario (nomeUsuario, email, senha) VALUES ('${user}', '${email}', '${senha}');
+        INSERT INTO usuario (nomeUsuario, senha) VALUES ('${user}', '${senha}');
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -38,8 +38,8 @@ function fetchDados(id) {
   return database.executar(instrucao)
 }
 
-function atualizarNome(id, nome) {
-  var instrucao = `UPDATE usuario SET nomeUsuario = '${nome}' WHERE idUsuario = ${id};`
+function atualizarUsuario(id, nome, senha) {
+  var instrucao = `UPDATE usuario SET nomeUsuario = '${nome}', senha = '${senha}' WHERE idUsuario = ${id};`
   return database.executar(instrucao)
 } 
 
@@ -61,7 +61,7 @@ module.exports = {
   cadastrar,
   listar,
   fetchDados,
-  atualizarNome,
+  atualizarUsuario,
   tentativas,
   finalizar
 };

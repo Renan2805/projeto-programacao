@@ -20,10 +20,12 @@ function selecionarResposta(resposta, btnId) {
 
   document.querySelectorAll('button').forEach(button => button.disabled = true)
 
-  var indexBtnCerto = questaoAtual.alternativas.filter((alt, i) => {
-    if(alt.certa == 1) return i + 1
-  })[0].idAlternativa
-
+  var indexBtnCerto;
+  questaoAtual.alternativas.forEach((alternativa, i) => {
+    if(alternativa.certa == 1) {
+      indexBtnCerto = i + 1
+    }
+  })
   console.log(indexBtnCerto)
 
   if(resposta == 1) {

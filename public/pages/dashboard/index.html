@@ -27,7 +27,7 @@
         </li>
       </ul>
       <ul>
-        <li class="link-side-bar">
+        <li class="link-side-bar" onclick="window.location.href = '/pages/dashboard/configuracoes/index.html'">
           <img src="./assets/svg/gear-fill.svg" alt="Bar icon">
           <span>Configurações</span>
         </li>
@@ -57,9 +57,13 @@
           </tbody>
         </table>
       </div>
-      <div class="wrapper-grafico card-dashboard">
+      <div class="wrapper-grafico card-dashboard" style="width: 300px;">
         <h2>Quantidade de notas</h2>
         <canvas id="chart-pizza" style="flex: 1"></canvas>
+      </div>
+      <div class="wrapper-grafico card-dashboard" style="width: fit-content;">
+        <h2>Linguagens mais favoritadas</h2>
+        <canvas id="chart-bar" style="flex: 1"></canvas>
       </div>
     </div>
   </main>

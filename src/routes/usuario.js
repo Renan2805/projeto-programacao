@@ -32,8 +32,8 @@ router.get('/tentativas/:idUsuario', (req, res) => {
   usuarioController.tentativas(req, res)
 })
 
-router.put('/atualizar-nome', (req, res) => {
-  usuarioController.atualizarNome(req, res)
+router.put('/atualizar', (req, res) => {
+  usuarioController.atualizarUsuario(req, res)
 })
 
 module.exports = router;

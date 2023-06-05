@@ -20,8 +20,13 @@ function favoritar(req, res) {
   modelLinguagem.favoritar(idUser, idLingua).then(result => res.json(result))
 }
 
+function linguagensFavoritas(_req, res) {
+  modelLinguagem.linguagensFavoritas().then(result => res.json(result))
+}
+
 module.exports = {
   linguagemUsuario,
   desfavoritar,
-  favoritar
+  favoritar,
+  linguagensFavoritas
 }

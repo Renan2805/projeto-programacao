@@ -16,4 +16,8 @@ router.post('/favoritar', (req, res) => {
   controllerLinguagem.favoritar(req, res)
 })
 
+router.get('/favoritas', (_req, res) => {
+  controllerLinguagem.linguagensFavoritas(_req, res)
+})
+
 module.exports = router

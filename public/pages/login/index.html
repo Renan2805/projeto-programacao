@@ -35,6 +35,7 @@
           <label for="password" class="form-label">Senha</label>
           <span><a href="#">esqueci a senha</a></span>
         </div>
+        <span id="msg-feedback" style="font-weight: 700;">&ensp;</span>
         <div class="buttons-wrapper">
           <button type="submit" id="btn_login">Login</button>
           <div>
@@ -69,16 +70,25 @@
         }).then((data) => {
           console.log('data', data)
           if(data == undefined) {
-            alert('Usuario ou senha inválidos')
+            showFeedbackMessage('Usuario ou senha inválidos', true)
           } else {
+            showFeedbackMessage('Logado com sucesso', false)
             sessionStorage.setItem('isLogged', 'true')
             sessionStorage.setItem('userData', JSON.stringify(data))
   
-            setTimeout(() => window.location.href = '/pages/dashboard/index.html', 1000)
+            setTimeout(() => window.location.href = '/pages/dashboard/index.html', 500)
           }
         })
         .catch((err) => console.error(err));
     });
+
+    function showFeedbackMessage(msg = '', bad = true) {
+      var spanMsg = document.getElementById('msg-feedback')
+      spanMsg.innerText = msg
+      spanMsg.style.color = bad ? 'red' : 'green'
+
+      setTimeout(() => spanMsg.innerHTML = '&ensp;', 2000)
+    }
   </script>
 </body>
 </html>

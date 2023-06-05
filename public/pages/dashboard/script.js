@@ -51,9 +51,29 @@ async function getUserData(userId) {
       }
     }, dadosGraficoPizza)
 
+    var dadosGraficoBarra = await fetch('/linguagens/favoritas').then(res => res.json())
+    var chartBar = criarGrafico(document.getElementById('chart-bar'), {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'vezes favoritada',
+          data: [],
+          backgroundColor: [
+            '#00ADB5',
+            '#AC7DD2'
+          ],
+          hoverOffset: 4
+        }]
+      }
+    }, dadosGraficoBarra)
+
     setInterval(async () => {
       dadosGraficoPizza = await fetch(`/analytcs/qtdNotas/${userId}`).then(res => res.json())
       chartPizza.updateDados(dadosGraficoPizza)
+
+      dadosGraficoBarra = await fetch('/linguagens/favoritas').then(res => res.json())
+      chartBar.updateDados(dadosGraficoBarra)
 
       tentativas = await fetch(`/usuarios/tentativas/${userId}`).then(res => res.json())
       renderTentativas(tentativas)

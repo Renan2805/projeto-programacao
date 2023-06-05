@@ -38,6 +38,7 @@ function renderQuizes() {
   const divWrapper = document.querySelector('.wrapper-quizes')
 
   fetchQuizesData().then(data => {
+    console.log(data)
     data.forEach(quiz => {
 
       const divQuiz = document.createElement('div')

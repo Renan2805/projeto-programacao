@@ -55,15 +55,12 @@ function desfavoritarLinguagem(id) {
     })
   }).then(res => {
     if(res.ok) {
-      return res.json()
+      toggleLoader()
     }
-  }).then(result => {
-    console.log(result)
-    if(result.affectedRows > 0) {
-      alert('ok')
-    }
+  }).catch(e => {
+    console.error(e)
     toggleLoader()
-  }).catch(e => console.error(e))
+  })
 }
 
 function favoritarLinguaem(id) {
@@ -78,30 +75,34 @@ function favoritarLinguaem(id) {
     })
   }).then(res => {
     if(res.ok) {
-      return res.json()
+      toggleLoader()
     }
-  }).then(result => {
-    console.log(result)
-    if(result.affectedRows > 0) {
-      alert('ok')
-    }
+  }).catch(e => {
+    console.error(e)
     toggleLoader()
-  }).catch(e => console.error(e))
+  })
 }
 
 verificarLinguagens()
 
-async function atualizarNome() {
+async function atualizarUsuario() {
   toggleLoader()
   var nome = ipt_username.value
+  var senha = ipt_senha.value
 
+  var validado = true
   if(nome == '' || nome.length < 3) {
-    alert('Username inválido')
-    return
+    showFeedbackMessage('Username inválido', true)
+    validado = false
+  }
+  if(senha.length > 45) {
+    showFeedbackMessage('Senha deve ter no máximo 45 caracteres', true)
+    validado = false
   }
 
-  if(nome == userData.nomeUsuario) {
-    showFeedbackMessage('Nome de usuario igual ao atual', true)
+  if(senha == '') senha = userData.senha
+
+  if(!validado) {
     toggleLoader()
     return
   }
@@ -113,11 +114,12 @@ async function atualizarNome() {
     },
     body: JSON.stringify({
       idUsuario: userData.idUsuario,
-      nome: nome
+      nome: nome,
+      senha: senha
     })
   }
 
-  var response = await fetch('/usuarios/atualizar-nome', fetchOptions)
+  var response = await fetch('/usuarios/atualizar', fetchOptions)
     .then(res => {
       if(res.ok) {
         return res.json()
@@ -125,7 +127,7 @@ async function atualizarNome() {
     }).catch(e => console.error(e))
 
   if(response.changedRows == 1) {
-    alert('nome alterado com sucesso')
+    showFeedbackMessage('nome alterado com sucesso', false)
     userData.nomeUsuario = nome
     console.log(userData)
     sessionStorage.setItem('userData', JSON.stringify(userData))

@@ -39,17 +39,6 @@
           </div>
           <div class="input-wrapper">
             <input
-              type="email"
-              id="ipt_email"
-              name="email"
-              placeholder=" "
-              class="form-input"
-              required
-            />
-            <label for="email" class="form-label">Email</label>
-          </div>
-          <div class="input-wrapper">
-            <input
               type="password"
               id="ipt_senha"
               name="password"
@@ -71,6 +60,7 @@
               >Confirmar Senha</label
             >
           </div>
+          <span id="msg-feedback" style="font-weight: 700;">&ensp;</span>
           <div class="buttons-wrapper">
             <button type="submit" id="btn_cadastro">Cadastrar</button>
             <div>
@@ -89,12 +79,11 @@
       document.getElementById("btn_cadastro").addEventListener("click", (e) => {
         e.preventDefault();
         const nome = ipt_user.value;
-        const email = ipt_email.value;
         const senha = ipt_senha.value;
-        cadastrar(nome, email, senha)
+        cadastrar(nome, senha)
       });
 
-      async function cadastrar(nome, email, senha) {
+      async function cadastrar(nome, senha) {
         try {
           var respostaInsert = await fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -103,21 +92,23 @@
             },
             body: JSON.stringify({
               user: nome,
-              email: email,
               password: senha,
-            }),
+            })
           }).then(res => res)
+          var jsonResposta = await respostaInsert.json()
 
           if(respostaInsert.ok) {
-            alert('Cadastrado com sucesso!')
-            setTimeout(() => entrar(nome, senha), 1000)
+            showFeedbackMessage('Cadastrado com sucesso!', false)
+            setTimeout(() => entrar(nome, senha), 500)
+          } else {
+            throw jsonResposta
           }
-    
         } catch(e) {
-          console.error(e)
+          console.log(e)
+          if(e == 1062) {
+            showFeedbackMessage('Nome de usuario já em uso', true)
+          }
         }
-
-        
       }
       
       async function entrar(nome, senha) {
@@ -144,6 +135,14 @@
         }
       }
     
+      function showFeedbackMessage(msg = '', bad = true) {
+        var spanMsg = document.getElementById('msg-feedback')
+        spanMsg.innerText = msg
+        spanMsg.style.color = bad ? 'red' : 'green'
+
+        setTimeout(() => spanMsg.innerHTML = '&ensp;', 2000)
+      }
+
     </script>
   </body>
 </html>
